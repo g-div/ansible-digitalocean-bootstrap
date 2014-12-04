@@ -1,0 +1,14 @@
+- name: Run the Rancher Server container
+  docker:
+    image=rancher/server
+    name=rancher
+    ports=8080:8080
+    state=running
+
+- name: Run the Rancher Agent container
+  docker: 
+    image=rancher/agent
+    name=rancheragent
+    volumes="/var/run/docker.sock:/var/run/docker.sock"
+    command="http://localhost:8080"
+    state=running

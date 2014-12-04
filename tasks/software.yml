@@ -12,13 +12,20 @@
     - { q: 'postfix/mailname',         t: 'string',  v: 'localhost' }
     - { q: 'postfix/destinations',     t: 'string',  v: 'localhost.localdomain,localhost,{{ do_hostname }}' }
 
-- name: Install essintial packages
+- name: Install essential packages
   apt: pkg="{{ item }}" state=latest 
   with_items:
     - ntp
     - tmux
     - fail2ban     
     - postfix
+    - python-pycurl
+    - git
+    - wget
+    - curl
+    - rsync
+    - zip
+    - vim
         
 - name: Configure postfix
   lineinfile: >

@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Create and configure the new droplet
+  hosts: localhost
   connection: local
   serial: 1
   gather_facts: no
@@ -8,14 +9,18 @@
   tasks:
     - include: tasks/droplet.yml
 
-- hosts: newdroplets
-  user: root      
+- name: Provision the new droplet
+  hosts: digital_ocean
+  user: root
   vars_files:
     - vars.yml
   tasks:
     - include: tasks/users.yml
     - include: tasks/security.yml
     - include: tasks/software.yml
-               
+    - include: tasks/docker.yml
+  roles:
+    - angstwad.docker_ubuntu
+
   handlers:
     - include: handlers/site.yml

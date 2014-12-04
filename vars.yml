@@ -1,11 +1,13 @@
-do_hostname: domain.tld
-do_admin: admin1
-do_email: drop@domain.tld
+do_hostname: dom0
+do_admin: web
+do_email:
 my_pub_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
-# digital ocean credentials 
-api_key:   
+api_key:
 client_id:
-      
+size: 63
+region: 5
+image: 6918990
+
 ssh_group: sshusers
 sudo_group: sudousers

@@ -30,14 +30,20 @@
 
 - name: Delete server ssh keys
   shell: rm -rf /etc/ssh/ssh_host_*
-  
+
 - name: Re-generate server ssh keys
   command: dpkg-reconfigure openssh-server
   notify: restart sshd
-  
-- name: Configure firewall for SSH
-  ufw: rule=allow name=OpenSSH
-     
+
+- name: Configure firewall
+  ufw: rule=allow port={{item}}
+  with_items:
+    - 22
+    - 80
+    - 8080
+    - 9345
+
+
 - name: Enable firewall 
   ufw: state=enabled 
 

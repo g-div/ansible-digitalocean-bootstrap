@@ -1,3 +1,4 @@
-ansible
+setuptools
+ansible>=1.6
 dopy
 passlib

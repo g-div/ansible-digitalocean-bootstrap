@@ -1,0 +1,13 @@
+---
+- name: Create and configure the new droplet
+  hosts: localhost
+  connection: local
+  serial: 1
+  gather_facts: no
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: Adding your API Key to the Digital Ocean dynamic inventory
+      ini_file: dest=hosts/digital_ocean.ini section=digital_ocean option=api_key value={{ api_key }}
+    - name: Adding your Client ID to the Digital Ocean dynamic inventory
+      ini_file: dest=hosts/digital_ocean.ini section=digital_ocean option=client_id value={{ client_id }}

@@ -79,3 +79,9 @@ Visit http://YOUR_DROPLET_IP:8080
 
 - If your host is already provisioned, you should then change the `user` in `newdroplet.yml` according to your `vars.yml`. It would be also necessary to add an additional field like the following one:
 `sudo: true`
+
+# Credits
+
+- Forked from [hostmaster/ansible-digitalocean-bootstrap](https://github.com/hostmaster/ansible-digitalocean-bootstrap)
+
+- `hosts/digital_ocean.py` from [ansible/ansible](https://github.com/ansible/ansible)
