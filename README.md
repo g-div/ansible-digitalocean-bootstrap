@@ -1,5 +1,20 @@
 This is an [Ansible](http://ansible.com) playbook to bootstrap [DigitalOcean](https://www.digitalocean.com/) virtual server running a [Docker](https://www.docker.com/) instance for [Rancher](http://www.rancher.io/).
 
+# Index
+- [Setup](#setup)
+  - [Python 2](#python-2)
+  - [Python 3](#python-3)
+- [Initial Configuration](#initial-configuration)
+- [Run!](#run)
+- [What this playbook do](#playbook-is-actually-doing-steps)
+  - [Droplet](#droplet)
+  - [Users and groups](#users-and-groups)
+  - [Security settings](#security-settings)
+  - [Install Software](#software)
+  - [End](#end)
+- [Troubleshooting](#troubleshooting)
+- [Credits](#credits)
+
 # Setup
 
 ## Python 2
@@ -27,7 +42,7 @@ All configurable variables are in `vars.yml` file. Mandatory parameters are belo
 * DigitalOcean `hostname`- used for *[idempotency](http://docs.ansible.com/glossary.html#idempotency)*
 * ssh public key file
 
-Run the following command to apply your configuration:
+Run the following command to **apply your configuration**:
 ```
 ansible-playbook -i hosts/localhost.yml inventory.yml
 ```
@@ -84,6 +99,8 @@ Visit http://YOUR_DROPLET_IP:8080
 - If your host is already provisioned, you should then change the `user` in `newdroplet.yml` according to your `vars.yml`. It would be also necessary to add an additional field like the following one:
 `sudo: true`
 
+## Dynamic inventory problems
+- `No JSON object could be decoded`: check and apply your [configuration](#initial-configuration)
 # Credits
 
 - Forked from [hostmaster/ansible-digitalocean-bootstrap](https://github.com/hostmaster/ansible-digitalocean-bootstrap)
