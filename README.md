@@ -7,7 +7,6 @@ With **python2** run:
 ```
 sudo pip install -r requirements.txt
 ansible-galaxy install -r requirements.yml
-ansible-playbook -i hosts/localhost.yml inventory.yml
 ```
 
 ## Python 3
@@ -27,6 +26,11 @@ All configurable variables are in `vars.yml` file. Mandatory parameters are belo
 * DigitalOcean `API key`
 * DigitalOcean `hostname`- used for *[idempotency](http://docs.ansible.com/glossary.html#idempotency)*
 * ssh public key file
+
+Run the following command to apply your configuration:
+```
+ansible-playbook -i hosts/localhost.yml inventory.yml
+```
 
 # Run!
 
